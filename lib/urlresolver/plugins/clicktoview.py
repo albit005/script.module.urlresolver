@@ -101,15 +101,15 @@ class ClicktoviewResolver(Plugin, UrlResolver, PluginSettings):
             sPattern += '\s+?</script>'
             r = re.search(sPattern, html, re.DOTALL + re.IGNORECASE)
             if r:
-      	sJavascript = r.group(1)
-		sUnpacked = jsunpack.unpack(sJavascript)
-		sPattern  = '<embed id="np_vid"type="video/divx"src="(.+?)'
-		sPattern += '"custommode='
-		r = re.search(sPattern, sUnpacked)
-		if r:
+            	sJavascript = r.group(1)
+            	sUnpacked = jsunpack.unpack(sJavascript)
+            	sPattern  = '<embed id="np_vid"type="video/divx"src="(.+?)'
+            	sPattern += '"custommode='
+            	r = re.search(sPattern, sUnpacked)
+            	if r:
                     dialog.update(100)
                     dialog.close()
-		    return r.group(1)
+                    return r.group(1)
 
             else:
                     pre = 'http://shmatka.wmff.org:182/d/'
