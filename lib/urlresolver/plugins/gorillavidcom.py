@@ -28,7 +28,7 @@ error_logo = os.path.join(common.addon_path, 'resources', 'images', 'redx.png')
 
 class GorillavidResolver(Plugin, UrlResolver, PluginSettings):
     implements = [UrlResolver, PluginSettings]
-    name = "gorillavid.in"
+    name = "gorillavid.com"
 
     def __init__(self):
         p = self.get_setting('priority') or 100
@@ -36,7 +36,7 @@ class GorillavidResolver(Plugin, UrlResolver, PluginSettings):
         self.net = Net()
         #e.g. http://gorillavid.com/vb80o1esx2eb
         #e.g. http://gorillavid.com/embed-u5w242qpjkb1-960x480.html
-        self.pattern = 'http://((?:www.)?gorillavid.in)/([0-9a-zA-Z]+)'
+        self.pattern = 'http://((?:www.)?gorillavid.com)/[embed]*\-*([0-9a-zA-Z]+)'
 
 
     def get_media_url(self, host, media_id):
@@ -73,7 +73,7 @@ class GorillavidResolver(Plugin, UrlResolver, PluginSettings):
         
 
     def get_url(self, host, media_id):
-        return 'http://gorillavid.in/%s' % (media_id)
+        return 'http://gorillavid.com/%s' % (media_id)
 
     def get_host_and_id(self, url):
         r = re.search(self.pattern, url)
